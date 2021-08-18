@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="jcchelloworld"
+		xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:tns="http://www.talend.org/service/"
+		targetNamespace="http://www.talend.org/service/">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="http://www.talend.org/service/">
+			<xsd:element name="jcchelloworldOperationRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="jcchelloworldOperationResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="jcchelloworldOperationRequest">
+		<wsdl:part name="parameters" element="tns:jcchelloworldOperationRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="jcchelloworldOperationResponse">
+		<wsdl:part name="parameters" element="tns:jcchelloworldOperationResponse"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:portType name="jcchelloworldPortType">
+		<wsdl:operation name="jcchelloworldOperation">
+			<wsdl:input message="tns:jcchelloworldOperationRequest"></wsdl:input>
+			<wsdl:output message="tns:jcchelloworldOperationResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="jcchelloworldBinding" type="tns:jcchelloworldPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="jcchelloworldOperation">
+			<soap:operation soapAction="http://www.talend.org/service/jcchelloworldOperation" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="jcchelloworld">
+		<wsdl:port name="jcchelloworldPort" binding="tns:jcchelloworldBinding">
+			<soap:address location="http://localhost:8090/services/jcchelloworld" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
