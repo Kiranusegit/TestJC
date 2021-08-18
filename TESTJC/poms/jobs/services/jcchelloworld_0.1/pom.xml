@@ -14,6 +14,7 @@
   <packaging>pom</packaging>
   <name>TESTJC jcchelloworld-${project.version} (0.1,Services) Kar</name>
   <modules>
+    <module>../../process/jcchelloworld/jcchelloworldPortType/jcchelloworldOperation/jcchelloworldporttype_jcchelloworldoperation_0.1</module>
     <module>pom-control-bundle.xml</module>
     <module>pom-feature.xml</module>
   </modules>
